@@ -9,6 +9,11 @@ function App() {
 
   return (
     <>
+    <div className='bg-gray-300 w-full h-screen py-[2em]'>
+      <div className='w-[40%] h-[80vh] bg-blue-400 mx-auto rounded-md text-center text-amber-50 p-[1.5%] text-2xl font-semibold'>
+          Enter Location
+      </div>
+    </div>
       
     </>
   )
