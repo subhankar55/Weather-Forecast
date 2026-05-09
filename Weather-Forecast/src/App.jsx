@@ -21,15 +21,15 @@ function App() {
             <form action="" method="post" className=''>
               <input type="text" 
               placeholder='Enter longitude'
-              className='bg-white w-[70%] block mx-auto my-[3em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+              className='bg-white w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
               />
               <input type="text" 
               placeholder='Enter latitude'
-              className='bg-white w-[70%] block mx-auto my-[3em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+              className='bg-white w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
               />
               <button
                 type='submit'
-                className='block mx-auto my-[2em] py-[1em] px-[2.5em] rounded-lg shadow-md shadow-white/80 bg-green-900 text-center text-white font-medium hover:bg-green-800'
+                className='block mx-auto my-[1em] py-[1em] px-[2.5em] rounded-lg shadow-md shadow-white/80 bg-green-900 text-center text-white font-medium hover:bg-green-800'
               >
                 Search
               </button>
