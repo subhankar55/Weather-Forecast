@@ -10,8 +10,8 @@ export default function Home(){
               style={{backgroundImage:`url(${bgImage})`}}
             >
               <div className='inset-0 py-[2em] bg-black/75'>
-                  <div className='text-center mb-[1em] text-white font-medium text-5xl'>
-                    Welcome to Weather App!
+                  <div className='text-center mb-[1em] text-white font-medium text-3xl'>
+                    Get Weather-Forecast of your city!
                   </div>
                   <div className='w-[40%] h-[80vh] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em]'>
                     <h3 className='text-center text-white text-2xl font-medium'>
