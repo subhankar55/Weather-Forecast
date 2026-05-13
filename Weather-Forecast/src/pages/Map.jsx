@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
+import markerElement from '../services/Marker';
 
 function Map() {
   const mapRef = useRef()
@@ -14,6 +15,16 @@ function Map() {
       zoom: 10 // starting zoom
     });
 
+
+  
+      const marker = markerElement;
+        // add marker to map
+        new mapboxgl.Marker(marker)
+          .setLngLat([-71.06776, 42.35816])
+          .addTo(mapRef.current)
+
+
+        
     return () => {
       mapRef.current.remove()
     }
