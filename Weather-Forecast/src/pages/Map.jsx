@@ -7,11 +7,11 @@ function Map() {
   const mapContainerRef = useRef()
 
   useEffect(() => {
-    mapboxgl.accessToken = `${import.meta.env.MAP_ACCESS_TOKEN}`
+    mapboxgl.accessToken = `${import.meta.env.VITE_MAP_ACCESS_TOKEN}`
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       center: [-71.06776, 42.35816], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-      zoom: 9 // starting zoom
+      zoom: 10 // starting zoom
     });
 
     return () => {
@@ -21,7 +21,10 @@ function Map() {
 
   return (
     <>
-      <div id='map-container' ref={mapContainerRef}/>
+      <div id='map-container' 
+      ref={mapContainerRef}
+      className='h-full w-full'
+      />
     </>
   )
 }
