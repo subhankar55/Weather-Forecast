@@ -1,10 +1,7 @@
+export default function markerElement(icon = '☀️'){
+    let element = document.createElement('div')
 
-
-let icon = '☀️';
-
-  const markerElement = document.createElement('div')
-
-        markerElement.innerHTML = `
+        element.innerHTML = `
           <div style="
             font-size: 35px;
             border-radius: 50%;
@@ -14,4 +11,7 @@ let icon = '☀️';
           </div>
         `
 
-export default markerElement;
+    return element;
+
+  }
+  

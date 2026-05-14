@@ -1,9 +1,48 @@
 import React from "react";
 import bgImage from '../assets/BGimage.avif'
-import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import forecast from "../services/weatherdata.js";
 
 
 export default function Home(){
+
+
+  const [city,setCity] = useState("kolkata");
+  const [dateTime,setDateTime] = useState("");
+
+  const navigate = useNavigate();
+  const handlecity = (e) =>{
+    setCity(e.target.value);
+  }
+  const handledate = (e) =>{
+    setDateTime(e.target.value);
+  }
+
+  const handlesubmit = async (e) =>{
+
+    e.preventDefault();
+
+    try {
+      const result = await forecast(city.toLowerCase(),dateTime);
+  
+      navigate("weather",{
+          state:{
+            lat: result.coordinates.lat,
+            long: result.coordinates.lon,
+            weather: result.weather.weather[0].main,
+            temp: result.weather.main.temp,
+            humidity: result.weather.main.humidity,
+            wind: result.weather.wind.speed,
+            description: result.weather.weather[0].description
+          }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+
+  }
+
 
     return(
         <div className='w-full min-h-screen bg-cover bg-center bg-no-repeat'
@@ -17,23 +56,30 @@ export default function Home(){
                     <h3 className='text-center text-white text-2xl font-medium'>
                       Enter Location
                     </h3>
-                    <form action="" method="post" className=''>
+                    <form 
+                      action="" 
+                      method="post" 
+                      className=''
+                      onSubmit={handlesubmit}
+                    >
                       <input type="text" 
-                      placeholder='Enter longitude'
+                      placeholder='Enter city'
                       className='bg-white w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+                      onChange={handlecity}
                       />
                       <input type="text" 
-                      placeholder='Enter latitude'
+                      placeholder='Till tomorrow :yyyy-mm-dd hh:mm:ss'
                       className='bg-white w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+                      onChange={handledate}
                       />
-                      <Link to="/weather">
-                        <button
-                        type='submit'
-                        className='block mx-auto my-[1em] py-[1em] px-[2.5em] rounded-lg shadow-md shadow-white/80 bg-green-900 text-center text-white font-medium hover:bg-green-800'
-                        >
+                      
+                      <button
+                      type='submit'
+                      className='block mx-auto my-[1em] py-[1em] px-[2.5em] rounded-lg shadow-md shadow-white/80 bg-green-900 text-center text-white font-medium hover:bg-green-800'
+                      >
                         Search
-                        </button>
-                      </Link>
+                      </button>
+                      
                       
                     </form>
                   </div>

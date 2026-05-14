@@ -1,8 +1,13 @@
 import React from "react";
 import Map from "./Map.jsx";
+import { useLocation } from "react-router-dom";
 
 
 export default function Weather(){
+
+    const location = useLocation();
+    const {lat,long,weather,temp,humidity,wind,description} = location.state;
+
 
     return (
         <div className="bg-gray-700 min-h-screen w-full p-[1em] bg-cover">
@@ -18,11 +23,11 @@ export default function Weather(){
                         Weather Report:
                     </h1>
                     <ol className="flex flex-col justify-center items-center">
-                        <li className="m-[1em] text-white">Temperature:</li>
-                        <li className="m-[1em] text-white">Humidity:</li>
-                        <li className="m-[1em] text-white">Wind Speed:</li>
-                        <li className="m-[1em] text-white">Description:</li>
-                        <li className="m-[1em] text-white">Rain:</li>
+                        <li className="m-[0.5em] text-white">Temperature: {(temp - 273.15).toFixed(2)} °C</li>
+                        <li className="m-[0.5em] text-white">Humidity: {humidity}%</li>
+                        <li className="m-[0.5em] text-white">Wind Speed: {wind} m/s</li>
+                        <li className="m-[0.5em] text-white">Description: {description}</li>
+                        <li className="m-[0.5em] text-white">Rain: {weather}</li>
                     </ol>
                 </div>
             </div>

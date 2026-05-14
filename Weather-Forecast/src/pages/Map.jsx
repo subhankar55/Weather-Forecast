@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
-import markerElement from '../services/Marker';
+import markerElement from '../services/marker.js';
 
 function Map() {
   const mapRef = useRef()
@@ -14,16 +14,11 @@ function Map() {
       center: [-71.06776, 42.35816], // starting position [lng, lat]. Note that lat must be set between -90 and 90
       zoom: 10 // starting zoom
     });
-
-
-  
-      const marker = markerElement;
+      const marker = markerElement();
         // add marker to map
         new mapboxgl.Marker(marker)
           .setLngLat([-71.06776, 42.35816])
           .addTo(mapRef.current)
-
-
         
     return () => {
       mapRef.current.remove()

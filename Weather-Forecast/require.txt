@@ -1,3 +1,4 @@
 tailwindcss @tailwindcss/vite
 react-router-dom
 mapbox-gl
+axios
