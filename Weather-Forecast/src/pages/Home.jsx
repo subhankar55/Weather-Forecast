@@ -46,14 +46,15 @@ export default function Home(){
 
 
     return(
-        <div className='w-full min-h-screen bg-cover bg-center bg-no-repeat'
+        <div className='relative w-full min-h-screen bg-cover bg-center bg-no-repeat'
               style={{backgroundImage:`url(${bgImage})`}}
             >
-              <div className='inset-0 py-[2em] bg-black/75'>
+              <div className='absolute inset-0 py-[2em] bg-cover bg-black/75'></div>
+              <div className="relative">
                   <div className='text-center mb-[1em] text-white font-medium text-3xl'>
                     Get Weather-Forecast of your city!
                   </div>
-                  <div className='w-[40%] h-[80vh] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em]'>
+                  <div className='w-[40%] h-[80vh] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em] overflow-y-auto'>
                     <h3 className='text-center text-white text-2xl font-medium'>
                       Enter Details
                     </h3>
