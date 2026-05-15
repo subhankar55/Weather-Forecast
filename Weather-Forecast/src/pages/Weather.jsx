@@ -38,7 +38,7 @@ export default function Weather(){
                         <li className="m-[0.5em] text-white">Humidity: {humidity}%</li>
                         <li className="m-[0.5em] text-white">Wind Speed: {wind} m/s</li>
                         <li className="m-[0.5em] text-white">Description: {description}</li>
-                        <li className="m-[0.5em] text-white">Rain: {weather}</li>
+                        <li className="m-[0.5em] text-white">Weather: {weather}</li>
                     </ol>
                 </div>
             </div>

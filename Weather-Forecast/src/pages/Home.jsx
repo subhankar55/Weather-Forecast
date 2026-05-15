@@ -55,7 +55,7 @@ export default function Home(){
                   </div>
                   <div className='w-[40%] h-[80vh] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em]'>
                     <h3 className='text-center text-white text-2xl font-medium'>
-                      Enter Location
+                      Enter Details
                     </h3>
                     <form 
                       action="" 
@@ -69,14 +69,14 @@ export default function Home(){
                       onChange={handlecity}
                       />
                       <input type="text" 
-                      placeholder='Till tomorrow :yyyy-mm-dd hh:mm:ss'
+                      placeholder='Till 4days :yyyy-mm-dd hh:mm:ss'
                       className='bg-white w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
                       onChange={handledate}
                       />
                       
                       <button
                       type='submit'
-                      className='block mx-auto my-[1em] py-[1em] px-[2.5em] rounded-lg shadow-md shadow-white/80 bg-green-900 text-center text-white font-medium hover:bg-green-800'
+                      className='block mx-auto my-[1em] py-[1em] px-[2.5em] rounded-lg shadow-md shadow-white/80 bg-green-900 text-center text-white font-medium hover:bg-green-700 cursor-pointer'
                       >
                         Search
                       </button>
