@@ -1,1 +1,1 @@
-export {WeatherContext,WeatherProvider,useWeather} from "./context";
+export {WeatherContext,WeatherProvider,useWeather} from "./Context.js";

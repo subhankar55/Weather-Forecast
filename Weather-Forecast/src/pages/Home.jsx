@@ -26,7 +26,7 @@ export default function Home(){
     try {
       const result = await forecast(city.toLowerCase(),dateTime);
   
-      navigate("weather",{
+      navigate("/weather",{
           state:{
             lat: result.coordinates.lat,
             long: result.coordinates.lon,
@@ -34,7 +34,8 @@ export default function Home(){
             temp: result.weather.main.temp,
             humidity: result.weather.main.humidity,
             wind: result.weather.wind.speed,
-            description: result.weather.weather[0].description
+            description: result.weather.weather[0].description,
+            icon: result.weather.weather[0].icon
           }
       });
     } catch (error) {

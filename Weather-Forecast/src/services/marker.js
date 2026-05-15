@@ -1,13 +1,16 @@
-export default function markerElement(icon = '☀️'){
+export default function markerElement(icon = ""){
     let element = document.createElement('div')
 
         element.innerHTML = `
           <div style="
-            font-size: 35px;
-            border-radius: 50%;
-            padding: 10px;
+            font-size: 15px;
+            border-radius: 10%;
+            padding: 5px;
           ">
-            ${icon}
+             <img
+                src="https://openweathermap.org/img/wn/${icon}@2x.png"
+                alt="weather-icon"
+             />
           </div>
         `
 

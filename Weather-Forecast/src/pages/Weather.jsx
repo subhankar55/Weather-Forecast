@@ -1,15 +1,26 @@
 import React from "react";
 import Map from "./Map.jsx";
 import { useLocation } from "react-router-dom";
+import {WeatherProvider} from "../contexts";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 export default function Weather(){
+    
 
     const location = useLocation();
-    const {lat,long,weather,temp,humidity,wind,description} = location.state;
-
+    const {lat,long,weather,temp,humidity,wind,description,icon} = location.state;
+    
+    const navigate = useNavigate();
+    const handleClick = (e) =>{
+        e.preventDefault();
+        navigate("/");
+    }
 
     return (
+        <WeatherProvider value={{long,lat,icon}}>
         <div className="bg-gray-700 min-h-screen w-full p-[1em] bg-cover">
             <h1 className="text-white text-center font-bold text-3xl mb-[1em]">
                 Weather-Forecast of your city!
@@ -31,7 +42,14 @@ export default function Weather(){
                     </ol>
                 </div>
             </div>
+
+            <button 
+            onClick={handleClick}
+            className="block mx-auto my-[1em] bg-gray-300 rounded-md px-[1.5em] py-[0.7em] cursor-pointer hover:bg-gray-500 hover:text-white text-2xl font-bold">
+                Back
+            </button>
             
         </div>
+        </WeatherProvider>
     );
 }
