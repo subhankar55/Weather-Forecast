@@ -54,7 +54,7 @@ export default function Home(){
                   <div className='text-center mb-[1em] text-white font-medium text-2xl md:text-3xl'>
                     Get Weather-Forecast of your city!
                   </div>
-                  <div className='w-full md:w-[40%] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em] overflow-y-auto'>
+                  <div className='w-full md:w-[40%] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em] overflow-y-auto mt-[3em] md:mt[1em]'>
                     <h3 className='text-center text-white text-xl md:text-2xl font-medium'>
                       Enter Details
                     </h3>
