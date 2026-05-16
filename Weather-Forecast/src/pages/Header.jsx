@@ -6,8 +6,8 @@ function Header() {
     return (
         <>
             <header>
-                <div className="bg-gray-800 h-[25vh] p-[1.5em]">
-                    <h1 className="text-center text-white text-5xl font-bold">
+                <div className="bg-gray-800  p-[1.5em]">
+                    <h1 className="text-center text-white text-2xl md:text-5xl font-bold">
                         Subhankar's Weather App
                     </h1>
                 </div>

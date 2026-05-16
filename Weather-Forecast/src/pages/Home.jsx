@@ -51,11 +51,11 @@ export default function Home(){
             >
               <div className='absolute inset-0 py-[2em] bg-cover bg-black/75'></div>
               <div className="relative">
-                  <div className='text-center mb-[1em] text-white font-medium text-3xl'>
+                  <div className='text-center mb-[1em] text-white font-medium text-2xl md:text-3xl'>
                     Get Weather-Forecast of your city!
                   </div>
-                  <div className='w-[40%] h-[80vh] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em] overflow-y-auto'>
-                    <h3 className='text-center text-white text-2xl font-medium'>
+                  <div className='w-full md:w-[40%] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em] overflow-y-auto'>
+                    <h3 className='text-center text-white text-xl md:text-2xl font-medium'>
                       Enter Details
                     </h3>
                     <form 
@@ -66,12 +66,12 @@ export default function Home(){
                     >
                       <input type="text" 
                       placeholder='Enter city'
-                      className='bg-white w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
                       onChange={handlecity}
                       />
                       <input type="text" 
                       placeholder='Till 4days :yyyy-mm-dd hh:mm:ss'
-                      className='bg-white w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
                       onChange={handledate}
                       />
                       

@@ -22,23 +22,23 @@ export default function Weather(){
     return (
         <WeatherProvider value={{long,lat,icon}}>
         <div className="bg-gray-700 min-h-screen w-full p-[1em] bg-cover">
-            <h1 className="text-white text-center font-bold text-3xl mb-[1em]">
+            <h1 className="text-white text-center font-bold text-1xl md:text-3xl mb-[1em]">
                 Weather-Forecast of your city!
             </h1>
-            <div className="flex w-full">
-                <div className="w-[30%] h-[80vh] mx-auto rounded-l-lg overflow-hidden">
+            <div className="flex flex-col md:flex-row w-full">
+                <div className="w-full md:w-[30%] h-[80vh] mx-auto rounded-t-md md:rounded-l-lg overflow-hidden">
                 <Map/>
                 </div>
-                <div className="w-[70%] h-[80vh] bg-gray-800 mx-auto rounded-r-lg p-[2em]">
-                    <h1 className="text-center text-white mb-[0.5em] font-medium text-2xl">
+                <div className="w-full md:w-[70%] h-[80vh] bg-gray-800 mx-auto rounded-b-md md:rounded-r-lg p-[2em]">
+                    <h1 className="text-center text-white mb-[0.5em] font-medium text-1xl md:text-2xl">
                         Weather Report:
                     </h1>
                     <ol className="flex flex-col justify-center items-center">
-                        <li className="m-[0.5em] text-white">Temperature: {(temp - 273.15).toFixed(2)} °C</li>
-                        <li className="m-[0.5em] text-white">Humidity: {humidity}%</li>
-                        <li className="m-[0.5em] text-white">Wind Speed: {wind} m/s</li>
-                        <li className="m-[0.5em] text-white">Description: {description}</li>
-                        <li className="m-[0.5em] text-white">Weather: {weather}</li>
+                        <li className="m-[0.5em] text-white text-sm md:text-xl">Temperature: {(temp - 273.15).toFixed(2)} °C</li>
+                        <li className="m-[0.5em] text-white text-sm md:text-xl">Humidity: {humidity}%</li>
+                        <li className="m-[0.5em] text-white text-sm md:text-xl">Wind Speed: {wind} m/s</li>
+                        <li className="m-[0.5em] text-white text-sm md:text-xl">Description: {description}</li>
+                        <li className="m-[0.5em] text-white text-sm md:text-xl">Weather: {weather}</li>
                     </ol>
                 </div>
             </div>
