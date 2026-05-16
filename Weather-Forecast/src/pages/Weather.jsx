@@ -26,10 +26,10 @@ export default function Weather(){
                 Weather-Forecast of your city!
             </h1>
             <div className="flex flex-col md:flex-row w-full">
-                <div className="w-full md:w-[30%] h-[80vh] mx-auto rounded-t-md md:rounded-l-lg overflow-hidden">
+                <div className="w-full md:w-[30%] h-[45vh] md:h-[80vh]  mx-auto rounded-t-md md:rounded-t-none md:rounded-l-lg overflow-hidden">
                 <Map/>
                 </div>
-                <div className="w-full md:w-[70%] h-[80vh] bg-gray-800 mx-auto rounded-b-md md:rounded-r-lg p-[2em]">
+                <div className="w-full md:w-[70%] bg-gray-800 mx-auto rounded-b-md md:rounded-b-none md:rounded-r-lg">
                     <h1 className="text-center text-white mb-[0.5em] font-medium text-1xl md:text-2xl">
                         Weather Report:
                     </h1>
