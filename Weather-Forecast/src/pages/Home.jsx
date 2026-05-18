@@ -10,21 +10,64 @@ export default function Home(){
 
   const [city,setCity] = useState("kolkata");
   const [dateTime,setDateTime] = useState("");
+  const [time,setTime] = useState("AM");
+  const [hours,setHours] = useState(0);
+  const [minutes,setMinutes] = useState(0);
+  const [seconds,setSeconds] = useState(0);
+
+
+
 
   const navigate = useNavigate();
+
   const handlecity = (e) =>{
     setCity(e.target.value);
   }
-  const handledate = (e) =>{
-    setDateTime(e.target.value);
+  const handledays = (e) =>{
+    const today = new Date();
+    let days = parseInt(e.target.value);
+    if(!days) days = 0;
+    today.setDate(today.getDate() + days);
+    setDateTime(today.toISOString());  
+  }
+  const handletime = (e) =>{
+    setTime(e.target.value);
+  }
+  const handlehours = (e) =>{
+    let hr = parseInt(e.target.value);
+    if(time === "PM" && hr !== 12){
+      hr += 12;
+    }
+    if(time === "AM" && hr === 12){
+      hr = 0;
+    }
+    setHours(hr);
+  }
+
+  const handleminutes = (e) =>{
+    setMinutes(parseInt(e.target.value));
+  }
+  const handlesec = (e) =>{
+    setSeconds(parseInt(e.target.value));
   }
 
   const handlesubmit = async (e) =>{
 
     e.preventDefault();
+    const updatedDate = new Date(dateTime);
+    console.log(hours);
+    console.log(minutes);
+    console.log(seconds);
+    console.log(dateTime);
+    updatedDate.setHours(hours);
+    updatedDate.setMinutes(minutes);
+    updatedDate.setSeconds(seconds);
+    const finalDate = updatedDate.toISOString();
+    console.log(finalDate);
+
 
     try {
-      const result = await forecast(city.toLowerCase(),dateTime);
+      const result = await forecast(city.toLowerCase(),updatedDate);
   
       navigate("/weather",{
           state:{
@@ -51,10 +94,10 @@ export default function Home(){
             >
               <div className='absolute inset-0 py-[2em] bg-cover bg-black/75'></div>
               <div className="relative">
-                  <div className='text-center mb-[1em] text-white font-medium text-2xl md:text-3xl'>
+                  <div className='text-center mb-[0.5em] text-white font-medium text-2xl md:text-3xl'>
                     Get Weather-Forecast of your city!
                   </div>
-                  <div className='w-full md:w-[40%] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em] overflow-y-auto mt-[3em] md:mt[1em]'>
+                  <div className='w-full md:w-[40%] bg-gray-700 opacity-80  mx-auto rounded-md pt-[2em] overflow-y-auto mt-[1em] md:mt[0.5em]'>
                     <h3 className='text-center text-white text-xl md:text-2xl font-medium'>
                       Enter Details
                     </h3>
@@ -69,12 +112,51 @@ export default function Home(){
                       className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
                       onChange={handlecity}
                       />
-                      <input type="text" 
-                      placeholder='Till 4days :yyyy-mm-dd hh:mm:ss'
-                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
-                      onChange={handledate}
-                      />
+                      <div className="flex justify-center w-full">
+                        <div className="flex w-[90%] md:w-[70%]">
+                        <label htmlFor="days" className=" rounded-l-lg bg-white p-[0.5em]">Days:</label>
+                        <select
+                        name="days" 
+                        id="days" 
+                        className='bg-white w-full border-gray-400 rounded-r-lg p-[0.5em] outline-none'
+                        onChange={handledays}
+                        >
+                        <option value="" disabled selected>select days</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        </select>
+                        </div>
+
+                      </div>
                       
+                      
+                      <label htmlFor="time"></label>
+                      <select
+                       name="time" 
+                       id="time"
+                       className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+                       onChange={handletime}
+                       >
+                        <option  value="AM">AM</option>
+                        <option value="PM">PM</option>
+                      </select>
+                      <input type="text" 
+                      placeholder='Hours'
+                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+                      onChange={handlehours}
+                      />
+                      <input type="text" 
+                      placeholder='Minutes'
+                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+                      onChange={handleminutes}
+                      />
+                      <input type="text" 
+                      placeholder='Seconds'
+                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
+                      onChange={handlesec}
+                      />
                       <button
                       type='submit'
                       className='block mx-auto my-[1em] py-[1em] px-[2.5em] rounded-lg shadow-md shadow-white/80 bg-green-900 text-center text-white font-medium hover:bg-green-700 cursor-pointer'
