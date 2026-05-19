@@ -9,13 +9,9 @@ export default function Home(){
 
 
   const [city,setCity] = useState("kolkata");
-  const [dateTime,setDateTime] = useState("");
+  const [dateTime,setDateTime] = useState(new Date());
   const [time,setTime] = useState("AM");
   const [hours,setHours] = useState(0);
-  const [minutes,setMinutes] = useState(0);
-  const [seconds,setSeconds] = useState(0);
-
-
 
 
   const navigate = useNavigate();
@@ -24,11 +20,11 @@ export default function Home(){
     setCity(e.target.value);
   }
   const handledays = (e) =>{
-    const today = new Date();
+    const today = new Date(dateTime);
     let days = parseInt(e.target.value);
     if(!days) days = 0;
     today.setDate(today.getDate() + days);
-    setDateTime(today.toISOString());  
+    setDateTime(today);  
   }
   const handletime = (e) =>{
     setTime(e.target.value);
@@ -44,30 +40,20 @@ export default function Home(){
     setHours(hr);
   }
 
-  const handleminutes = (e) =>{
-    setMinutes(parseInt(e.target.value));
-  }
-  const handlesec = (e) =>{
-    setSeconds(parseInt(e.target.value));
-  }
-
   const handlesubmit = async (e) =>{
 
     e.preventDefault();
     const updatedDate = new Date(dateTime);
-    console.log(hours);
-    console.log(minutes);
-    console.log(seconds);
-    console.log(dateTime);
     updatedDate.setHours(hours);
-    updatedDate.setMinutes(minutes);
-    updatedDate.setSeconds(seconds);
-    const finalDate = updatedDate.toISOString();
+    updatedDate.setMinutes(0);
+    updatedDate.setSeconds(0);
+    const finalDate = updatedDate.toString();
     console.log(finalDate);
 
 
+
     try {
-      const result = await forecast(city.toLowerCase(),updatedDate);
+      const result = await forecast(city.toLowerCase(),finalDate);
   
       navigate("/weather",{
           state:{
@@ -142,21 +128,26 @@ export default function Home(){
                         <option  value="AM">AM</option>
                         <option value="PM">PM</option>
                       </select>
-                      <input type="text" 
-                      placeholder='Hours'
-                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
-                      onChange={handlehours}
-                      />
-                      <input type="text" 
-                      placeholder='Minutes'
-                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
-                      onChange={handleminutes}
-                      />
-                      <input type="text" 
-                      placeholder='Seconds'
-                      className='bg-white w-[90%] md:w-[70%] block mx-auto my-[2em] border-gray-400 rounded-lg p-[0.5em] outline-none'
-                      onChange={handlesec}
-                      />
+                      <div className="flex justify-center w-full">
+                        <div className="flex w-[90%] md:w-[70%]">
+                        <label htmlFor="hours" className=" rounded-l-lg bg-white p-[0.5em]">Hours:</label>
+                        <select
+                        name="hours" 
+                        id="hours" 
+                        className='bg-white w-full border-gray-400 rounded-r-lg p-[0.5em] outline-none'
+                        onChange={handlehours}
+                        >
+                        <option value="" disabled selected>select hours</option>
+                        <option value="0">0</option>
+                        <option value="3">3</option>
+                        <option value="6">6</option>
+                        <option value="9">9</option>
+                        <option value="12">12</option>
+                        </select>
+                        </div>
+
+                      </div>
+                  
                       <button
                       type='submit'
                       className='block mx-auto my-[1em] py-[1em] px-[2.5em] rounded-lg shadow-md shadow-white/80 bg-green-900 text-center text-white font-medium hover:bg-green-700 cursor-pointer'
